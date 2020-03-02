@@ -13,7 +13,7 @@ export default StartScreen = (props) => {
         <View >
             <View style={styles.view}>
                 <View style={styles.button}>
-                <MainButton title = "MAP" style={styles.button} onPress={()=>console.log('clicked')}/>
+                <MainButton title = "MAP" style={styles.button} onPress={()=>props.switch('Map')}/>
                 <MainButton title = "SETTINGS" style={styles.button} onPress={()=>props.switch('Settings')}/>
 
                 </View>

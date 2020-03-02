@@ -8,6 +8,7 @@ import { AppLoading } from 'expo';
 import Color from './constants/colors'
 import Header from './components/header'
 import { AppStateContext } from './contexts/AppStateContext'
+import MapScreen from './screens/mapScreen'
 const fetchFonts = () => {
   return Font.loadAsync({
     Roboto: require('native-base/Fonts/Roboto.ttf'),
@@ -33,6 +34,7 @@ export default App = () => {
 
   else if (location === 'Settings') content = <SettingsScreen switch={setLocation} />
 
+  else if (location === 'Map') content = <MapScreen switch={setLocation} />
 
   if (!dataLoaded) {
     return (
