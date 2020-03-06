@@ -1,10 +1,10 @@
 import React from 'react'
 import {View, StyleSheet} from 'react-native'
-import SettingsUtil from '../components/settings'
+import Map from '../components/map'
 export default Settings =(props)=>{
     return(
         <View style={styles.here}>
-            <SettingsUtil/>
+            <Map/>
         </View>
     )
 }
@@ -12,5 +12,6 @@ export default Settings =(props)=>{
 const styles = StyleSheet.create({
     here:{
         flex: 1,
-    }
+    },
+    
 })

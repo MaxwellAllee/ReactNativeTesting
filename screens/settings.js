@@ -11,6 +11,7 @@ export default Settings =(props)=>{
 
 const styles = StyleSheet.create({
     here:{
-        flex: 1,
+       flex: 1,
+       marginTop: 10
     }
 })
