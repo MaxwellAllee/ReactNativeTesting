@@ -1,9 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 28122,
-  "expoServerNgrokUrl": "https://pv-bs6.anonymous.reactnativetesting.exp.direct",
-  "packagerNgrokUrl": "https://packager.pv-bs6.anonymous.reactnativetesting.exp.direct",
-  "ngrokPid": 28306
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": null
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {View, StyleSheet} from 'react-native'
 import Map from '../components/map'
 export default Settings =(props)=>{
@@ -11,7 +11,7 @@ export default Settings =(props)=>{
 
 const styles = StyleSheet.create({
     here:{
-        flex: 1,
+        flex: 1
     },
     
 })

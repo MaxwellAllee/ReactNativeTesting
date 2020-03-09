@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, Switch } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 const listItem = props => {
-  console.log(props)
   return (
     
     <View style={{ ...styles.listItem, ...props.style }}>
@@ -33,6 +32,7 @@ const styles = StyleSheet.create({
   switchStyle: {
     flexDirection: 'column',
     // alignItems: 'center'
+    
   },
   title: {
     width: '90%',

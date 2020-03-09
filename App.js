@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, ImageBackground, Image } from 'react-native'
+import { StyleSheet, View, ImageBackground, SafeAreaView } from 'react-native'
 
 import * as Font from 'expo-font';
 import SettingsScreen from './screens/settings'
@@ -15,20 +15,14 @@ const fetchFonts = () => {
     Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
   });
 };
-
+import track from './util/tracker'
 export default App = () => {
   const background = require('./assets/blue.jpg')
-  const [context, setContext] = useState(
-    {
-      tracker: true,
-      change: () => {
-        console.log('change')
-        setContext(curr => ({ ...curr, tracker: !curr.tracker }))
-      }
-    })
+
   const [dataLoaded, setDataLoaded] = useState(false);
   const [location, setLocation] = useState('Main')
   const [tracking, setTracking] = useState(false)
+  const [currLocal, setCurrLocal] = useState(false)
   let content = null
   if (location === 'Main') content = <StartScreen switch={setLocation} />
 
@@ -49,24 +43,47 @@ export default App = () => {
 
   const test = {
     tracker: tracking,
-    change: () => {
+    change: (set) => {
       console.log('change')
-      setTracking(curr => !curr)
+      if(set){
+        startTracking(set)
+      }
+      setTracking(set)
+    },
+    local: currLocal,
+    handleLocation: function (obj){
+        console.log(obj, '************************************************')
+       
+        setCurrLocal(obj)
+        console.log(currLocal)
     }
   }
+
+
+  const startTracking = async(bool)=>{
+    const tempValue = await track(test.handleLocation,bool)
+    console.log(tempValue);
+    
+    setCurrLocal(tempValue)
+  }
+
+  
+
+//startTracking(true)
+
   return (
     <AppStateContext.Provider value={test}>
-      <View style={styles.test}>
+      <SafeAreaView  style={styles.test}>
         <ImageBackground source={background} imageStyle={{ resizeMode: 'stretch' }} style={{ width: '100%', height: '100%' }}>
 
           <Header secret={setLocation} title={location} />
-          {/* <Image source={background} style={{ width: '100%', height: '100%' }} /> */}
+
           <View style={styles.check}>
             {content}
           </View>
-          {/* <MapScreen switch={setLocation} /> */}
+          
         </ImageBackground>
-      </View>
+      </SafeAreaView >
     </AppStateContext.Provider>
   );
 
@@ -79,6 +96,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   check:{
-
+    flex: 1
   }
 })

@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     button: {
         width: '100%',
         marginVertical: 40,
+        opacity: .95
         
     },
 
