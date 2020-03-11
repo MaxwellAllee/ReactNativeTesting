@@ -7,7 +7,7 @@ import {AppStateContext}from '../contexts/AppStateContext'
 export default StartScreen = (props) => {
 
     let value = useContext(AppStateContext)
-    console.log(value)
+    
     return (
         
         <View >

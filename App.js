@@ -23,6 +23,7 @@ export default App = () => {
   const [location, setLocation] = useState('Main')
   const [tracking, setTracking] = useState(false)
   const [currLocal, setCurrLocal] = useState(false)
+  const [theList, setTheList] = useState([])
   let content = null
   if (location === 'Main') content = <StartScreen switch={setLocation} />
 
@@ -40,30 +41,40 @@ export default App = () => {
       />
     );
   }
-
+  let loop
   const test = {
     tracker: tracking,
     change: (set) => {
       console.log('change')
       if(set){
+        loop = setInterval(
+         ()=> startTracking(true), 10000
+        )
         startTracking(set)
+      }
+      else{
+        clearInterval(loop)
       }
       setTracking(set)
     },
     local: currLocal,
     handleLocation: function (obj){
-        console.log(obj, '************************************************')
+
        
         setCurrLocal(obj)
-        console.log(currLocal)
-    }
+       
+    },
+    pastLocations: theList
   }
 
 
   const startTracking = async(bool)=>{
     const tempValue = await track(test.handleLocation,bool)
-    console.log(tempValue);
-    
+
+    setTheList(curr=>{
+      curr.push(tempValue)
+      return curr
+    } )
     setCurrLocal(tempValue)
   }
 

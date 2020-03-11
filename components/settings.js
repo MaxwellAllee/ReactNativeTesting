@@ -6,9 +6,8 @@ import { AppStateContext } from '../contexts/AppStateContext'
 
 export default Settings = (props) => {
     const value = useContext(AppStateContext)
-    console.log(value, "<====")
+    
     const here = event => {
-        console.log(event, 'asdfjaksldfj;lk')
         value.change(event)
 
     }
